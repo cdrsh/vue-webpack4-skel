@@ -1,0 +1,113 @@
+div
+    h4 Vue-Router
+    router-link(
+        :to="{ name: 'MainPage' }",
+        :class="{'active-cls':($route.fullPath=='/main')}"
+    ) Main
+    br
+    router-link(
+        :to="{ name: 'Page1' }",
+        :class="{'active-cls':($route.fullPath=='/page1')}"
+    ) Page1
+    br
+    router-link(
+        to="/page2",
+        :class="{'active-cls':($route.fullPath=='/page2')}"
+    ) Page2
+    br
+    br
+    router-link(
+        :to="{ name: 'Subpage1', params:{id:1} }",
+        :class="{'active-cls':($route.fullPath=='/page2/subpage1')}"
+    ) Subpage1
+    br
+    router-link(
+        :to="{ name: 'Subpage2', params:{id:2, subid:1} }",
+        :class="{'active-cls':($route.fullPath=='/page2/subpage2')}"
+    ) Subpage2
+
+    br
+    hr
+    br
+    br
+
+    h4 Bootstrap4
+    template(v-for="variant in ['primary','secondary','success']")
+        b-button(size="lg", :variant="variant")
+            | {{variant}}
+    hr
+    br
+    br
+
+    h4 Vue-awesome
+    i.fa.fa-user
+    i.fa.fa-times
+    hr
+    br
+    br
+
+    h4 Vue-lodash
+    | {{clonnedObj}}
+    hr
+    br
+    br
+
+    h4 Vue-moment
+    span {{ new Date() | moment("DD.MM.YY HH:mm") }}
+    br
+    span Timezone: {{ new Date() | moment('timezone', 'America/Los_Angeles', "DD.MM.YY HH:mm")}}
+    hr
+    br
+    br
+
+    h4 Vue-notifications and Vue-toasted
+    b-button.primary(size="lg", @click="onMsgNotify") Message notify
+    hr
+    br
+    br
+
+    h4 Vuex
+    b-button.primary(size="lg", @click="onLoadSettings") Load Settings from Server
+    div(v-if="getSettingsLoadingFlag") Settings Loading...
+    div(v-if="getSettingsLoaded") 
+        | Settings Loaded!!!
+        br
+        | Settings:{{getSettings}}
+    hr
+    br
+    br
+
+    h4 vue-i18n
+    | Translated text: {{$t('TEXT')}}
+    br
+    b-button.primary(size="lg", @click="changeLang('en')") EN
+    b-button.primary(size="lg", @click="changeLang('ru')") RU
+    b-button.primary(size="lg", @click="changeLang('de')") DE
+    hr
+    br
+    br
+
+    h4 vee-validate
+    form
+        .form-group
+            label Email
+            input.form-control.alert(
+                type="email",
+                v-model="form.email",
+                name="myemail",
+                v-validate="'required|email'", 
+                data-vv-delay="300", 
+                :class="{'alert-success': !errors.has('myemail'),'alert-danger': errors.has('myemail') }"
+            )
+            .alert.alert-danger(v-show="errors.has('myemail')")
+                | {{ errors.first('myemail') }}
+    hr
+    br
+    br
+
+    h4.scss-red scss-red
+    h4.scss-green scss-green
+    h4.scss-red less-red
+    h4.scss-green less-green
+    h4.css-red css-red
+    h4.css-green css-green

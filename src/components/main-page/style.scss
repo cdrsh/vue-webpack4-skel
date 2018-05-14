@@ -1,0 +1,11 @@
+$fa-font-path:   "../../../node_modules/font-awesome/fonts/" !default;
+@import "../../../node_modules/font-awesome/scss/font-awesome";
+
+@import './style-imported.scss';
+.scss-red {
+	color:red;
+}
+
+.active-cls {
+	color: green !important;
+}

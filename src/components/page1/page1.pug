@@ -1,0 +1,6 @@
+div
+    h1 Page1
+    router-link(
+        :to="{ name: 'MainPageRoot' }",
+        :class="{'active-cls':($route.fullPath=='/')}"
+    ) Home
